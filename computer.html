@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+ 
+<body>
+    <head>
+        <title>computer</title>
+    </head>
+<h2>Sanjay Bindi orders a computer</h2>
+
+<form>
+    <label for="form1_extra">Extra memory</label>
+    <input type ="checkbox" id="form1_extra" name="form1_extra" value="memory" style = "margin-left: 10px;"><br><br>
+
+    <label for="form1_mouse">Mouse</label>
+    <input type ="checkbox" id="form1_mouse" name="form1_mouse" value="mouse" style = "margin-left: 60px;"><br><br>
+
+    <label for="form1_cell">Cell service</label>
+    <input type ="checkbox" id="form1_cell" name="form1_cell" value="cell" style = "margin-left: 27px;"><br><br>
+
+
+
+    <input type="button" onclick="ordercomputer()" value="Order a computer">
+</form>
+
+
+<p id="result3">This text will be replaced </p>
+<br><br>
+
+
+<form>
+    <label for="form2_propertyname">Enter a property name</label>
+    <input type ="text" id="form2_prop_name" name="form2_propertyname" value="engraved" style = "margin-left: 10px;"><br><br>
+
+    <label for="form2_propertyvalue">Enter a Value</label>
+    <input type ="text" id="form2_prop_value" name="form2_propertyvalue" style = "margin-left: 60px;"><br><br>
+
+    <input type="button" onclick="updateComputer()" value="Update computer">
+</form>
+<p id="updateresult">This text will be replaced </p>
+
+
+<script> 
+var my_computer = {}
+
+function ordercomputer(){
+    my_computer = {}
+    memo = document.getElementById("form1_extra")
+    mous = document.getElementById("form1_mouse")
+    cel = document.getElementById("form1_cell")
+
+    if(memo.checked)
+    {
+        my_computer["memo"] = true;    
+    }
+    else {
+        my_computer["memo"] = false;
+    }
+    if(mous.checked)
+    {
+        my_computer["mous"] = true;
+    }
+    else{
+        my_computer["mous"] = false;
+    }
+    if(cel.checked)
+    {
+        my_computer["cel"]=true;
+    }
+    else{
+        my_computer["cel"]=false;
+    }
+    if(!memo.checked | mous.checked | cel.checked)
+    {
+        alert("Please choose any option")
+    }
+        document.getElementById("result3").innerHTML = "my_Computer[]{ Extra Memory :" + my_computer.memo + ",  " +"Mouse : "+ my_computer.mous + ",  " + "Cell : " + my_computer.cel +" }"
+}
+
+function updateComputer(){
+    my_computer={}
+    prop_name = document.getElementById("form2_prop_name").value
+    prop_value = document.getElementById("form2_prop_value").value
+    // let my_computer = [prop_name,prop_value]
+    // document.getElementById("updateresult").innerHTML = my_computer
+    my_computer[prop_name]=prop_value
+       document.getElementById("updateresult").innerHTML = "my_Computer[]=  " + JSON.stringify(my_computer);
+     
+}
+
+
+</script> 
+
+
+</body>
+</html> 
